@@ -14,8 +14,9 @@
 package cmd
 
 import (
-	"github.com/spf13/cobra"
 	"log"
+
+	"github.com/spf13/cobra"
 
 	"github.com/davecgh/go-spew/spew"
 	"github.com/paypal/gatt"
@@ -24,14 +25,9 @@ import (
 // collectorCmd represents the collector command
 var collectorCmd = &cobra.Command{
 	Use:   "collector",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: Collector,
+	Short: "Process to collect G5 sensor readings",
+	Long:  ``,
+	Run:   Collector,
 }
 
 func init() {
@@ -48,7 +44,6 @@ func init() {
 	// collectorCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
-
 var DeviceInfo = gatt.MustParseUUID("0000180A-0000-1000-8000-00805F9B34FB")
 var Advertisement = gatt.MustParseUUID("0000FEBC-0000-1000-8000-00805F9B34FB")
 var CGMService = gatt.MustParseUUID("F8083532-849E-531C-C594-30F1F86A4EA5")
@@ -64,9 +59,7 @@ var CharacteristicUpdateNotification = gatt.MustParseUUID("00002902-0000-1000-80
 
 var done = make(chan struct{})
 
-
-
-func Collector(cmd *cobra.Command, args []string) {	
+func Collector(cmd *cobra.Command, args []string) {
 	var DefaultClientOptions = []gatt.Option{
 		gatt.LnxMaxConnections(1),
 		gatt.LnxDeviceID(-1, false),
