@@ -13,7 +13,7 @@
 
 package main
 
-import "rigdrip/cmd"
+import "github.com/applehat/rigdrip/cmd"
 
 func main() {
 	cmd.Execute()
